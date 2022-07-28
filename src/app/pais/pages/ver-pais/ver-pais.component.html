@@ -1,1 +1,47 @@
-<p>ver-pais works!</p>
+<div class="alert alert-info" *ngIf="!pais">
+    Espere por favor...
+</div>
+
+<div class="row" *ngIf="pais">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1>        
+                Pais: {{pais.name.common}}
+            </h1>
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-6">
+            <h3>Bandera</h3>
+            <img [src]="pais.flags.png" alt="" class="img-thumb">
+        </div>
+        <div class="col-6">
+            <h3>Información</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Población</strong> {{pais.population}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Código numerico</strong> {{pais.car.side}}
+                </li>
+            </ul>
+        </div> 
+    </div>
+    
+    <h3 class="mt-1">Traducciones</h3>
+    <div class="row mt-1">
+        <div class="col">
+            <span class="badge bg-primary mr-1"> {{pais.translations['ara'].common}}</span>
+            <span class="badge bg-primary mr-1"> {{pais.translations['ces'].common}}</span>
+            <span class="badge bg-primary mr-1"> {{pais.translations['cym'].common}}</span>
+            <span class="badge bg-primary mr-1"> {{pais.translations['deu'].common}}</span>
+            <span class="badge bg-primary mr-1"> {{pais.translations['est'].common}}</span>
+            <span class="badge bg-primary mr-1"> {{pais.translations['fra'].common}}</span>
+        </div>
+    </div>
+
+    <pre class="mt-5">
+        {{pais | json}}
+    </pre>
+</div>

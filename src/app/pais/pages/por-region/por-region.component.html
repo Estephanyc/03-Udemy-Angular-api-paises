@@ -1,14 +1,13 @@
-<h2>Por país</h2>
-<hr>
+<h2>Buscar por región: {{regionActiva | titlecase}}</h2>
+
+<h3>Seleccione una región</h3>
 <div class="row">
     <div class="col">
-       <app-pais-input (OnEnter)="buscar($event)" placeholder ="Buscar por región"></app-pais-input>
+        <!-- [class.btn-primary]="region == regionActiva"  -->
+        <!-- [ngClass]="{'btn-primary': regionActiva === region, 'btn-outline-primary': regionActiva !== region}" -->
+        <!-- [class]="(region === regionActiva) ? 'btn btn-primary' : 'btn btn-outline-primary'"  -->
+        <button *ngFor="let region of regiones" [class]="getClaseCss(region)" (click)="activarRegion(region)">{{region  | titlecase}}</button>
     </div>
-</div>
-
-<hr>
-<div class="alert alert-danger" *ngIf="error">
-    No se encontro nada con el termino {{termino}}
 </div>
 
 <div class="row">

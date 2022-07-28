@@ -12,6 +12,8 @@ export class PorPaisComponent implements OnInit {
   termino: string = 'Hola mundo';
   error: boolean = false;
   paises: Country[] = [];
+  paisesSugeridos: Country[] = [];
+  mostrarSugerencias: boolean = false;
 
   constructor(private paisService: PaisService) { }
 
@@ -35,7 +37,17 @@ export class PorPaisComponent implements OnInit {
 
   sugerencias(termino: string){
     this.error = false;
+    this.termino = termino;
+    this.mostrarSugerencias = true;
 
+    this.paisService.buscarPais(termino).
+    subscribe(
+      paises => this.paisesSugeridos = paises.splice(1,5),
+      error => this.paisesSugeridos = [])
+  }
+
+  buscarSugerido(termino: string) {
+    this.buscar(termino);
   }
 
 }
